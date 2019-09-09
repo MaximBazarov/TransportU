@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PromiseU",
+        "repositoryURL": "https://github.com/Unicore/PromiseU",
+        "state": {
+          "branch": null,
+          "revision": "2c758fefc3678e1bcecad5de2c6e8d1807210b71",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
