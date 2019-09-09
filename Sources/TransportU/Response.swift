@@ -11,15 +11,15 @@ import Foundation
 
 
 /// Type erasure for `Response` type
-protocol ResponseType {
+public protocol ResponseType {
     associatedtype ResultType: Decodable
 }
 
 
 /// Generic `Response`
-enum Response<T: Decodable>: ResponseType {
+public enum Response<T: Decodable>: ResponseType {
 
-    typealias ResultType = T
+    public typealias ResultType = T
 
     /// Request succesfully returns data
     case success(ResultType)

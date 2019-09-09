@@ -16,7 +16,12 @@ import PromiseU
 /**
  Transport for performing a `Request<T>`
  */
-struct Transport<U: Request> {
-    let baseURL: URL?
-    let perform: (U) -> Promise<Response<U.ResultType>>
+public struct Transport<U: Request> {
+    public let baseURL: URL?
+    public let perform: (U) -> Promise<Response<U.ResultType>>
+
+    public init(baseURL: URL? = nil, perform: @escaping (U) -> Promise<Response<U.ResultType>>) {
+        self.baseURL = baseURL
+        self.perform = perform
+    }
 }

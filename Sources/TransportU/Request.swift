@@ -8,25 +8,39 @@
 
 import Foundation
 
-
+public
 protocol Request {
 
-    /// Request
     associatedtype Body: RequestBody
+    associatedtype ResultType: Decodable
+
+    /// Request
     var endpoint: String { get }
     var body: Body { get }
     var method: HTTPMethod { get }
     var headers: [String: String] { get }
 
-    /// Result
-    associatedtype ResultType: Decodable
+    /// Response
     var decoder: ResponseDecoder<ResultType> { get }
 }
 
 // MARK: - JSON Decoder
 /// Default decoder for responses is JSON
-extension Request {
+public extension Request {
     var decoder: ResponseDecoder<ResultType> {
         return ResponseDecoder.json(of: ResultType.self)
+    }
+    
+}
+
+public struct EmptyResponse: Codable {
+
+}
+
+public extension Request where ResultType == EmptyResponse{
+    var decoder: ResponseDecoder<ResultType> {
+        return ResponseDecoder.custom {  _ in
+            return EmptyResponse()
+        }
     }
 }

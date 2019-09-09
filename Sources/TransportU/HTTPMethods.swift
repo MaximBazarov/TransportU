@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HTTPMethod {
+public enum HTTPMethod {
 
     case get
     case head
@@ -25,7 +25,7 @@ enum HTTPMethod {
 
     case custom(String)
 
-    var code: String {
+    public var code: String {
         switch self {
 
         case .get: return "GET"

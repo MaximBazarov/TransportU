@@ -9,7 +9,7 @@
 
 import Foundation
 
-
+public
 protocol RequestBody {
     associatedtype Parameters
 
@@ -20,11 +20,12 @@ protocol RequestBody {
 
 // MARK: - URL Encoded Body
 
+public
 struct FormURLEncodedBody: RequestBody {
 
-    let parameters: [String: String]
+    public let parameters: [String: String]
 
-    var data: Data? {
+    public var data: Data? {
         let parts: [String] = self.parameters.compactMap { (key, value) in
             guard
                 let key = key
@@ -42,10 +43,21 @@ struct FormURLEncodedBody: RequestBody {
 }
 
 
+
+// MARK: - EmptyBody
+public struct EmptyBodyType: RequestBody {
+    public let parameters = ""
+    public var data: Data?
+}
+
+
+public let EmptyBody = EmptyBodyType()
+
+
+
 // MARK: - TextBody
 
 struct TextBody: RequestBody {
-
     let parameters: String
     let encoding: String.Encoding
 
@@ -55,34 +67,34 @@ struct TextBody: RequestBody {
 }
 
 // MARK: - JSON Body
+public struct JSONBody<T: Encodable>: RequestBody {
 
-struct JSONBody<T: Encodable>: RequestBody {
+    public let parameters: T
+    public let encoding: String.Encoding
 
-    let parameters: T
-    let encoding: String.Encoding
-
-    var data: Data? {
+    public var data: Data? {
         return try? JSONEncoder().encode(parameters)
     }
 }
 
 // MARK: - Multipart Body
+@available(*, unavailable, message: "Wasn't implemented yet.")
+public struct MultipartBody: RequestBody {
 
-struct MultipartBody: RequestBody {
+    public let parameters: String
 
-    let parameters: String
-
-    var data: Data? {
+    public var data: Data? {
         fatalError("MultipartBody encoding was not implemented")
     }
 }
 
 // MARK: - File Body
-struct FileBody: RequestBody {
+@available(*, unavailable, message: "Wasn't implemented yet.")
+public struct FileBody: RequestBody {
 
-    let parameters: String
+    public let parameters: String
 
-    var data: Data? {
+    public var data: Data? {
         fatalError("FileBody encoding was not implemented")
     }
 }
