@@ -43,8 +43,8 @@ playground.xcworkspace
 # Package.resolved
 .build/
 .xcodeproj
-**/.xcodeproj
-.xcodeproj/**
+**/*.xcodeproj
+*.xcodeproj/**
 
 # CocoaPods
 #
