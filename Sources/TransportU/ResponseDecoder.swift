@@ -1,10 +1,11 @@
 //
 //  ResponseDecoder.swift
-//  ChessGuru
+//  TransportU
 //
 //  Created by Maxim Bazarov on 08.09.19.
+//  MIT License
 //  Copyright © 2019 Maksim Bazarov. All rights reserved.
-//
+
 
 import Foundation
 
