@@ -40,6 +40,10 @@ struct FormURLEncodedBody: RequestBody {
             .joined(separator: "&")
             .data(using: .utf8, allowLossyConversion: true)
     }
+
+    public init(parameters: [String: String]) {
+        self.parameters = parameters
+    }
 }
 
 

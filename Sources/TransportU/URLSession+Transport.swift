@@ -16,7 +16,7 @@ extension URLSession {
 
 
     /// Returns `Transport<R: Request>`
-    func transport<R: Request>(for baseURL: URL, requestType: R.Type) -> Transport<R> {
+    public func transport<R: Request>(for baseURL: URL, requestType: R.Type) -> Transport<R> {
         return Transport<R>(baseURL: baseURL) { request in
             return Promise<Response<R.ResultType>> { resolve in
 
